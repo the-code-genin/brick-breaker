@@ -220,8 +220,9 @@ system.refresh = function(){
 		//Pause the game internally
 		engine.state= 'systempause';
 		//Prevent the system from displaying multiple msgs
+		clearInterval(interval[0]);		
 		clearInterval(interval[1]);
-		if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Level cleared!</h3>',levelClear());
+		if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Level cleared!</h3>',function(){levelClear()});
 		else {
 			alert(msg);
 			levelClear();

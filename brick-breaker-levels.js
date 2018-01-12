@@ -6,9 +6,9 @@ function(screenWidth){
 	system.currentLevel = 1;
 	var i,j;//These variables are used for navigation through the matrix
 	//Fill the brick matrix with a square of bricks
-	for(i=2;i<=5;i++){
-		for(var j = 2;j <= 5;j++){
-		engine.bricks[i][j] = new brick(j*(screenWidth*0.125),i*(screenWidth*0.06),'red');		
+	for(i=5;i<=5;i++){
+		for(var j = 5;j <= 5;j++){
+		engine.bricks[i][j] = new brick(j*(screenWidth*0.125),i*(screenWidth*0.06),'yellow');		
 		}
 	}
 }
