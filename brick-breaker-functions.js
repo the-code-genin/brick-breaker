@@ -272,6 +272,8 @@ function levelClear(){
 		
 //This function is called when the ball is in collision with the lower part of the canvas
 function loseLife(){
+			$('#leftButton').trigger('touchend');
+			$('#rightButton').trigger('touchend');
 //If the player still has some life points left
 	if(system.life>1){
 		//Subtract a life point
@@ -289,6 +291,7 @@ function loseLife(){
 			newGame(screenWidth);
 			ball.speed = 5;
 			engine.state = 'playing';
+			paddle.direction = 'idle';
 		});
 		else{
 			alert(msg);
