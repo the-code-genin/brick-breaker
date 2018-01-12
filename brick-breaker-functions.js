@@ -15,8 +15,9 @@ $(function(){
 	$('#scorecounter').width(screenWidth*0.4);
 	
 	//Set the canvas to fit the dimensions of the gaming menu
+	//But it must be a square
 	$('#screen').attr('width',screenWidth);
-	$('#screen').attr('height',screenHeight*0.7)
+	$('#screen').attr('height',screenWidth);
 	//Resize the buttons to adjust to the game screen
 	$('#leftButton').height(screenHeight*0.2);
 	$('#rightButton').height(screenHeight*0.2);

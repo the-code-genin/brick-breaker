@@ -54,7 +54,9 @@ p {
 	backface-visibility: hidden;
 }
 
-
+#screen {
+	overflow:hidden;
+} 
 /*Animation to the game menu*/
 @keyframes fliptogame{
 	from {transform: rotateY(0deg)}
