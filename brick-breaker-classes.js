@@ -74,8 +74,7 @@ var ball = {
 	}
 	//If the ball is touching the lower canvas then a life is lost
 	if(y+ r >= width){
-		y = width-r-(r/2);
-		speedY *= -1;
+		engine.state = 'systempause';
 		loseLife();
 	}
 		//The ball is touching the side of the canvas

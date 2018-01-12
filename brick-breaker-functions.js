@@ -262,7 +262,7 @@ function levelClear(){
 				var msg = '<p>You have cleared the game, you win!</br/>';
 				msg += 'Your score was: '+system.score+'</p>';
 	
-				if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Game over!</h3>',clearScreen());
+				if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Game over!</h3>',function(){clearScreen()});
 				else{
 				alert(msg);
 				clearScreen();
@@ -316,7 +316,7 @@ function gameOver(){
 	endGame();
 	//Tell the user the next message
 	var msg = 'Your score was: '+system.score;
-	if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Game over!</h3>',clearScreen());
+	if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Game over!</h3>',function(){clearScreen()});
 	else{
 	alert('Game over!\n'+msg);
 	clearScreen()
