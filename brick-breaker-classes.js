@@ -249,7 +249,9 @@ var ball = {
 					else speedY-= yInc;
 				}
 					//Increase score by 1 brick
-					system.score += 1;
+					system.score++;
+					//For every 100 points give one extra life
+					if(system.score%100 == 0) system.life++;
 				}
 			}
 		}
