@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Browser brick breaker game</title>
+<meta name="viewport" content="width=device-width"/>
+<link rel="stylesheet" href="pwin.css"/>
+<link rel="stylesheet" href="brick-breaker.css"/>
+<script src="jquery.js"></script>
+<script src="pwin.js"></script>
+<script src="brick-breaker-engine.js"></script>
+<script src="brick-breaker-functions.js"></script>
+<script src="brick-breaker-classes.js"></script>
+<script src="brick-breaker-levels.js"></script>
+</head>
+<body>
+<div id="container">
+
+<div id="card">
+<!--The menu face-->
+<div id="menu">
+<h1>Brick breaker<br/>Demo</h1>
+<p>By Adekunle Mohammed</p>
+<button id="playButton" onclick="flip()">Play</button>
+</div>
+
+<!--The gaming menu face-->
+<div id="game">
+<!--The score table-->
+<table id="#scoretable" cellspacing="0" cellpadding="0"><tr>
+<td><p id="scorecounter">Score:--</p></td>
+<td><p id="levelcounter">Level:--</p></td>
+<td><p id="lifecounter">Life:--</p></td>
+</tr></table>
+<!--The gaming window, where the visual magic happens-->
+<canvas id="screen">
+Sorry you don't support the html5 canvas api
+required to play this game : (
+</canvas>
+<button id="exitButton" onclick="exitQuit()">Exit</button>
+<!--The direction buttons-->
+<button id="leftButton" ontouchstart="system.buttons.left=true" ontouchend="system.buttons.left=false"></button>
+<button id="rightButton" ontouchstart="system.buttons.right=true" ontouchend="system.buttons.right=false"></button>
+<!--The action/power button-->
+<button id="pauseButton" onclick="system.start()">Start</button>
+</div>
+</div>
+
+</div>
+</body>
+</html>

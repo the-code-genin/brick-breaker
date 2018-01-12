@@ -1,0 +1,87 @@
+.pwindowBackground {
+	background:gray;
+	width:100%;
+	height:100%;
+	position:fixed;
+	left:0px;
+	top:0px;
+	z-index:1;
+	opacity:0.5;
+}
+.pwindow {
+	background:#fafafa;
+	border-radius:4px;
+	width:80%;
+	max-height:400px;
+	position:fixed;
+	left:10%;
+	top:0px;
+	z-index:2;
+	box-shadow:2px 2px 5px 1px gray;
+}
+
+.pwinContent {
+	padding:1%;
+	display:block;
+	overflow:auto;
+}
+
+.pwinHeader{
+	padding:1%;
+	display:block;
+	border-bottom:1px solid black;
+	text-align:center;
+	overflow:auto;
+}
+
+.pwinHeader h1,.pwinHeader h2,
+.pwinHeader h3,.pwinHeader h4,
+.pwinHeader h5,.pwinHeader h6
+{
+	margin:0px;
+}
+
+.pwinAlertOk {
+	margin:0px;
+	display:solid;
+	border-top:1px solid black;
+	padding:2px;
+	text-align:center;
+	font-size:big;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+.pwinConfirmNo {
+	margin:0px;
+	display:solid;
+	border-top:1px solid black;
+	border-right:1px solid black;
+	padding:2px;
+	text-align:center;
+	font-size:big;
+	font-weight:bold;
+	text-transform:uppercase;
+	width:50%;
+	float:left;
+}
+
+.pwinConfirmYes {
+	margin:0px;
+	display:solid;
+	border-top:1px solid black;
+	padding:2px;
+	text-align:center;
+	font-size:big;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+.pwinPromptInput {
+	border:0px;
+	border-bottom:1px solid black;
+	display:solid;
+	margin-bottom:3px;
+	width:90%;
+	margin-left:5%;
+}
