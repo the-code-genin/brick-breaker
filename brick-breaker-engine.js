@@ -22,7 +22,12 @@ var system = {
 	//Stores the player score
 	score:null,
 	//Stores the player lifes
-	life:null
+	life:null,
+	//Stores the user settings
+	settings:{
+		//Stores the checker for static browser games
+		staticGame:false
+	}
 }
 
 //The game engine, it manages collisions redraw and so on

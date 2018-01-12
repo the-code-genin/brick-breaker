@@ -271,11 +271,11 @@ function brick(x,y,color){
 	this.x=x;
 	this.y=y;
 	//Drawing the brick
-	this.draw = function(ctx,width){
+	this.draw = function(ctx,width){if(engine.state == 'playing'){
 		ctx.fillStyle = this.color;
 		ctx.strokeStyle = 'black';
 		ctx.lineWidth = 1;
 		ctx.fillRect(x,y,width*0.125,width*0.06);
 		ctx.strokeRect(x,y,width*0.125,width*0.06);			
-	}
+	}}
 }

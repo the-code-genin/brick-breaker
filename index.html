@@ -4,6 +4,7 @@
 <head>
 <title>Browser brick breaker game</title>
 <meta name="viewport" content="width=device-width"/>
+<base href="https://yogmemo.github.io/brick-breaker/"/>
 <link rel="stylesheet" href="pwin.css"/>
 <link rel="stylesheet" href="brick-breaker.css"/>
 <script src="jquery.js"></script>
@@ -22,6 +23,10 @@
 <h1>Brick breaker<br/>V1 Beta</h1>
 <p>By Adekunle Mohammed</p>
 <button id="playButton" onclick="flip()">Play</button>
+<div id="options">
+<h4>Options</h4>
+<input type="checkbox" id="static" value="on" onclick="staticGame(event)"/><label>Disable experimental features</label>
+</div>
 </div>
 
 <!--The gaming menu face-->

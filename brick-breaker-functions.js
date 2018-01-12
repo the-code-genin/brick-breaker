@@ -28,6 +28,7 @@ $(function(){
 //When the action button is pressed
 //AKA.The power button😂
 system.start = function(){
+if(system.screenPosition!= "flipping"){
 	if(engine.state == 'idle'){
 		engine.state = 'playing';
 		$('#pauseButton').html('Pause');
@@ -41,6 +42,7 @@ system.start = function(){
 		$('#pauseButton').html('Pause');
 		engine.state = 'playing';
 	}
+}
 }
 
 //This is like the on switch that kickstarts everything
@@ -127,11 +129,15 @@ function exitQuit(){
 		engine.state = 'paused';
 		$('#pauseButton').html('Play');
 		//Ask the player for quit confirmation
-		pwin.confirm('Are you sure you want to quit the current game?',null,
+		if(system.settings.staticGame == false) pwin.confirm('Are you sure you want to quit the current game?',null,
 		function(){
 			//If the user confirms yes end the game
 			if(pwin.result == true) endGame();
 		});
+		else {
+			var input = confirm('Are you sure you want to quit the current game?');
+			if(input == true) endGame();
+		}
 	}
 }
 
@@ -215,7 +221,16 @@ system.refresh = function(){
 		engine.state= 'systempause';
 		//Prevent the system from displaying multiple msgs
 		clearInterval(interval[1]);
-		pwin.alert(msg,'<h3>Level cleared!</h3>',function(){
+		if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Level cleared!</h3>',levelClear());
+		else {
+			alert(msg);
+			levelClear();
+		}
+	}
+}
+
+//When a level is cleared
+function levelClear(){
 			//Check if this is the last level or if another level still exists
 			if(system.levels.length - system.currentLevel > 0){
 				//Move to the next level
@@ -245,26 +260,15 @@ system.refresh = function(){
 				//Tell the user the next message
 				var msg = '<p>You have cleared the game, you win!</br/>';
 				msg += 'Your score was: '+system.score+'</p>';
-				pwin.alert(msg,'<h3>Game over!</h3>',function(){
-					//Get the canvas
-					var screen = document.getElementById('screen');
-					//Get the width and height of the canvas
-					var width = $(screen).width();
-					var height = $(screen).height();
-					//Get the context 2d
-					var ctx = screen.getContext('2d');
-					//Clear the screen
-					ctx.clearRect(0,0,width,height);
-				
-					//Stop the engine and reset the system
-					engine.state = 'idle';
-					clearInterval(interval[0]);
-				});
+	
+				if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Game over!</h3>',clearScreen());
+				else{
+				alert(msg);
+				clearScreen();
+				}
 			}
-		});
-	}
 }
-
+		
 //This function is called when the ball is in collision with the lower part of the canvas
 function loseLife(){
 //If the player still has some life points left
@@ -277,7 +281,7 @@ function loseLife(){
 		var msg = "You have "+system.life;
 		if(system.life > 1) msg += ' lifes left';
 		else msg += ' life left';
-		pwin.alert(msg,'<h3>You lost a life!</h3>',function(){
+		if(system.settings.staticGame == false) pwin.alert(msg,'<h3>You lost a life!</h3>',function(){
 			//Get the max width of the gaming menu
 			var screenWidth = $('#game').width();
 			//Resume the game and reset the paddle and ball position and state
@@ -285,6 +289,18 @@ function loseLife(){
 			ball.speed = 5;
 			engine.state = 'playing';
 		});
+		else{
+			alert(msg);
+			continueGame();
+		}
+		function continueGame(){
+			//Get the max width of the gaming menu
+			var screenWidth = $('#game').width();
+			//Resume the game and reset the paddle and ball position and state
+			newGame(screenWidth);
+			ball.speed = 5;
+			engine.state = 'playing';
+		}
 	}
 	//If not it's game over
 	else gameOver();
@@ -299,15 +315,31 @@ function gameOver(){
 	endGame();
 	//Tell the user the next message
 	var msg = 'Your score was: '+system.score;
-	pwin.alert(msg,'<h3>Game over!</h3>',function(){
-		//Get the canvas
-		var screen = document.getElementById('screen');
-		//Get the width and height of the canvas
-		var width = $(screen).width();
-		var height = $(screen).height();
-		//Get the context 2d
-		var ctx = screen.getContext('2d');
-		//Clear the screen
-		ctx.clearRect(0,0,width,height);
-	});
+	if(system.settings.staticGame == false) pwin.alert(msg,'<h3>Game over!</h3>',clearScreen());
+	else{
+	alert('Game over!\n'+msg);
+	clearScreen()
+	}
+}
+
+//Clear the screen
+function clearScreen(){
+	//Stop the engine and reset the system
+	engine.state = 'idle';
+	clearInterval(interval[0]);
+		
+	//Get the canvas
+	var screen = document.getElementById('screen');
+	//Get the width and height of the canvas
+	var width = $(screen).width();
+	var height = $(screen).height();
+	//Get the context 2d
+	var ctx = screen.getContext('2d');
+	//Clear the screen
+	ctx.clearRect(0,0,width,height);
+}
+
+//Checker for static games
+function staticGame(e){
+	system.settings.staticGame = e.target.checked;
 }
