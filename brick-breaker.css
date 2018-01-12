@@ -2,7 +2,9 @@
 	text-align:center;
 	user-select:none;
 }
-
+body{
+	webkit-user-select:none;
+}
 /*The viewport into the system*/
 #container {
 	perspective:800px;
@@ -57,6 +59,7 @@ p {
 #screen {
 	overflow:hidden;
 } 
+
 /*Animation to the game menu*/
 @keyframes fliptogame{
 	from {transform: rotateY(0deg)}
@@ -76,6 +79,7 @@ button {
 	text-transform:uppercase;
 	font-weight:800;
 	border-radius:3px;
+	user-select:none;
 }
 
 #exitButton {

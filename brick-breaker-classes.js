@@ -26,11 +26,20 @@ var paddle = {
 		//Move the paddle within the screen
 		switch(this.direction){
 			case 'left':
-				if(this.x >= 0)this.x -=  this.speed;
+				if(this.x >= 0){
+				//Check the distance between the paddle and the left side of screen
+				//to avoid a vibrating paddle
+					if(this.x > this.speed) this.x -=  this.speed;
+					else this.x = 0;
+				}
 				else this.x = 0;
 				break;
 			case 'right':
-				if(this.x+this.length <= width) this.x +=  this.speed;
+				if(this.x+this.length <= width){
+					//To avoid a vibrating paddle
+					if(this.x + this.length+this.speed < width) this.x +=  this.speed;
+					else this.x = width-this.length;
+				}
 				else this.x = width-this.length;
 				break;
 		}
